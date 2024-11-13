@@ -12,5 +12,9 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ''),
       }
     }
+  },
+  build: {
+    emptyOutDir: true,
+    outDir: "../src/main/resources/static"
   }
 })

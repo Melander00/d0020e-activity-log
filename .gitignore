@@ -32,5 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-# Egentligen ska man inte commita sina .env filer men gör det bara för det är enklare i det här fallet.
-#.env
+src/main/resources/static
