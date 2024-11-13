@@ -26,7 +26,7 @@ public class LogController {
         return this.logRepository.save(logEntry);
     }
 
-    @PutMapping("/edit")
+    @PutMapping("/update")
     public LogEntry updateLog(@RequestBody LogEntry logEntry) {
         if(this.logRepository.existsById(logEntry.getId())) {
             return this.logRepository.save(logEntry);
@@ -34,7 +34,7 @@ public class LogController {
         throw new LogNotFoundException();
     }
 
-    @PatchMapping("/order")
+    @PatchMapping("/set_order")
     @ResponseStatus(HttpStatus.OK)
     public void changeOrderOfLogs(@RequestBody Map<Integer, Integer> logMap) {
         for(Integer id : logMap.keySet()) {
@@ -43,9 +43,9 @@ public class LogController {
         }
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteLog(@RequestBody Integer id) {
+    public void deleteLog(@PathVariable Integer id) {
         if(this.logRepository.existsById(id)) {
             this.logRepository.deleteById(id);
         }
