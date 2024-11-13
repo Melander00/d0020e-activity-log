@@ -14,19 +14,21 @@ public class LogEntry {
     private String results;
     private String github;
     private Integer index;
+    private Integer week;
 
     private LogEntry() {}
 
-    public LogEntry(String activity, float time, String results, String github, int index) {
+    public LogEntry(String activity, float time, String results, String github, Integer index, Integer week) {
         this.activity = activity;
         this.time = time;
         this.results = results;
         this.github = github;
         this.index = index;
+        this.week = week;
     }
 
     public String getActivity() {
-        return this.activity;
+        return activity;
     }
 
     public float getTime() {
@@ -47,6 +49,10 @@ public class LogEntry {
 
     public Integer getId() {
         return id;
+    }
+
+    public Integer getWeek() {
+        return week;
     }
 }
 

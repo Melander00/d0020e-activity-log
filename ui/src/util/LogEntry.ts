@@ -4,12 +4,15 @@ export type LogEntry = {
     time: number,
     results: string,
     github: string,
-    index: number
+    index: number,
+    week: number,
 }
 
 export type LogEntryNoId = Omit<LogEntry, "id">
 
-const Endpoint = (path: string) => import.meta.env.DEV ? `/api/${path}` : `/${path}`
+export const Endpoint = (path: string) => import.meta.env.DEV ? `/api${path}` : `${path}`
+
+export function LogsEndpoint() {return Endpoint("/logs")}
 
 export async function GetAllLogEntries() {
     const res = await fetch(Endpoint("/logs"))
