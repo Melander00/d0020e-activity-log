@@ -35,11 +35,19 @@ public class LogController {
     }
 
     @PatchMapping("/order")
-    @ResponseStatus(value= HttpStatus.OK)
+    @ResponseStatus(HttpStatus.OK)
     public void changeOrderOfLogs(@RequestBody Map<Integer, Integer> logMap) {
         for(Integer id : logMap.keySet()) {
             Integer newIndex = logMap.get(id);
             this.logRepository.updateIndex(id, newIndex);
+        }
+    }
+
+    @DeleteMapping("/delete")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteLog(@RequestBody Integer id) {
+        if(this.logRepository.existsById(id)) {
+            this.logRepository.deleteById(id);
         }
     }
 }
