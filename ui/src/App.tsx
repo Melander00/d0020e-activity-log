@@ -1,5 +1,5 @@
 import './App.css';
-import Icon from './components/Icon';
+import CreateLogPage from './components/create/CreateLogPage';
 import MainPage from './components/main/Main';
 import Top from './components/top/Top';
 import { CreateLogEntry } from './util/LogEntry';
@@ -30,10 +30,11 @@ function App() {
     return (
     <>
     <Top/>
+        {/* <button onClick={randomEntry}>Add random entry <Icon>more_vert</Icon></button> */}
     <div className='container'>
         
-        <button onClick={randomEntry}>Add random entry <Icon>more_vert</Icon></button>
         <MainPage/>
+        <CreateLogPage/>
     </div>
     </>
     )

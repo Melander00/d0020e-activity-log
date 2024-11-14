@@ -2,6 +2,14 @@
     --accent: rgb(182, 76, 231);
 }
 
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
 
 .top {
     width: 100%;
@@ -9,3 +17,43 @@
     background: var(--accent);
 }
 
+.week {
+    border: 1px solid white;
+    padding: 15px;
+    margin: 15px;
+}
+
+.main {
+    width: 70%;
+}
+
+.log-entry {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    > span {
+        flex: 1;
+        margin: 0 5px;
+    }
+}
+
+.log-id, .log-time, .log-handle {
+    flex: 0.1 !important;
+    text-align: right !important;
+    min-width: 50px;
+}
+
+.create {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+
+    > label {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+    }
+}
