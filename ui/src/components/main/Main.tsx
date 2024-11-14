@@ -17,8 +17,10 @@ export default function MainPage() {
         }) 
 
         const arr: React.ReactNode[] = []
+        let ids = 1;
         for(const [week, entries] of Object.entries(weeks)) {
-            arr.push(<Week key={week} weekNumber={parseInt(week)} logEntries={entries} />)
+            arr.push(<Week key={week} weekNumber={parseInt(week)} logEntries={entries} beginningIds={ids} />)
+            ids += entries.length;
         } 
         return arr
     }, [data])

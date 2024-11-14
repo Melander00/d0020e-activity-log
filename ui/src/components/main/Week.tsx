@@ -4,31 +4,40 @@ import LogComponent from "./LogComponent"
 
 type WeekProps = {
     logEntries: LogEntry[],
-    weekNumber: number
+    weekNumber: number,
+    beginningIds: number,
 }
 
 export default function Week({
     logEntries,
-    weekNumber    
+    weekNumber ,
+    beginningIds   
 }: WeekProps) {
 
     const entries = useMemo(() => {
-        return logEntries.sort((a, b) => a.index - b.index).map((entry) => <LogComponent key={entry.id} entry={entry} />)
+        const logs = logEntries.sort((a, b) => a.index - b.index);
+        return logs.map((entry, index) => <LogComponent key={entry.id} entry={entry} id={beginningIds + index} />)
     }, [logEntries])
 
     return(
         <>
         <div className="week">
             <h2>Week {weekNumber}</h2>
-            <div className="log-entry">
-                <span className="log-id">ID:</span>
-                <span className="log-activity">Activity:</span>
-                <span className="log-time">Time:</span>
-                <span className="log-results">Results:</span>
-                <span className="log-github">Github:</span>
-                <span className="log-handle"></span>
+            <div className="logs">
+                <div className="log">
+                    <div className="log-entry">
+                        <span className="log-id">ID:</span>
+                        <span className="log-activity">Activity:</span>
+                        <span className="log-time">Time:</span>
+                        <span className="log-results">Results:</span>
+                        <span className="log-github">Github:</span>
+                    </div>
+                    <div className="log-buttons">
+                        <span className="log-options"></span>
+                    </div>
+                </div>
+                {entries}
             </div>
-            {entries}
         </div>
         </>
     )
